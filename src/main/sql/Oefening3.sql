@@ -23,3 +23,30 @@
     INNER JOIN categories ON beers.CategoryId = categories.Id
     ORDER BY beers.Alcohol DESC
     LIMIT 3;
+
+    SELECT Name, Alcohol
+    FROM beers
+    WHERE Alcohol = (
+        SELECT MAX(Alcohol) FROM beers
+        );
+
+    SELECT Name
+    FROM beers
+    WHERE BrewerId IN (
+        SELECT BrewerId
+        FROM  brewers
+        WHERE City LIKE 'Leuven'
+        );
+
+    SELECT a.CategoryId
+    FROM (
+        SELECT DISTINCT CategoryId, BrewerId FROM beers
+         ) AS a
+    GROUP BY CategoryId HAVING COUNT(*) = 1;
+
+    SELECT category, average
+    FROM (
+        SELECT categoryid, AVG(alcohol) AS average
+        FROM beers
+        GROUP BY categoryid) AS r1
+    INNER JOIN categories ON r1.CategoryId = categories.id;
