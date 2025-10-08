@@ -14,13 +14,13 @@ SELECT Name FROM brewers WHERE Turnover BETWEEN 1 and 5000 ORDER BY Turnover;
 SELECT DISTINCT Alcohol FROM beers ORDER BY Alcohol DESC ;
 
 # (f) Toon alle namen van bieren waarvan de naam “wit” bevat zonder dubbels, alfabetisch gesorteerd.
-SELECT DISTINCT name FROM beers WHERE Name LIKE  '%wit%' ORDER BY name ASC ;
+SELECT DISTINCT Name FROM beers WHERE Name LIKE  '%wit%' ORDER BY name ASC ;
 
-# (g) Toon alle bieren met meer alcohol dan 3 en minder dan 7 zonder gebruik te maken van logische operatoren (<, >, …) (568)
-SELECT * FROM beers WHERE Alcohol between 4 and 6;
+# (g) Toon alle bieren met meer alcohol dan 3 en minder dan 7 zonder gebruik te maken van logische operatoren (<, >, …)
+SELECT Name, Alcohol FROM beers WHERE Alcohol between 4 and 6;
 
 # (h) Geef de top 3 van de sterkste bieren in onze database.
 SELECT name, Alcohol FROM beers ORDER BY 2 DESC limit 3;
 
 # (i) Doordenker: Maak een lijst van de naam, straat, postcode en stad voor alle brouwers in 3 kolommen voor een adressenlijst. M.a.w. combineer de postcode en de stad in 1 kolom.
-SELECT name, Address, concat(ZipCode, ' ', City) AS ZipCodeEndCity FROM brewers;
+SELECT Name, Address, concat(ZipCode, ' ', City) AS ZipCodeEndCity FROM brewers;

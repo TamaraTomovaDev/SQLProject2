@@ -4,6 +4,8 @@
     <file url="file://$PROJECT_DIR$/src/main/sql/BeerDB.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/main/sql/BrewerDB.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/main/sql/CategoryDB.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/src/main/sql/Oefening.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/main/sql/Oefening1.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/main/sql/Oefening2.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/main/sql/Oefening3.sql" dialect="MySQL" />
   </component>
 </project>
