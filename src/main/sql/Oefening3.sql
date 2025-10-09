@@ -50,3 +50,11 @@
         FROM beers
         GROUP BY categoryid) AS r1
     INNER JOIN categories ON r1.CategoryId = categories.id;
+
+    SELECT b1.*
+    FROM beers b1
+    WHERE b1.Alcohol < (
+        SELECT AVG(b2.alcohol)
+        FROM beers b2
+        WHERE b2.CategoryId = b1.CategoryId
+        );

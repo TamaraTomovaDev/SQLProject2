@@ -1,0 +1,33 @@
+# (a) Selecteer de brouwers die een turnover hebben die hoger dan het gemiddelde is. (16)
+    SELECT Name, Turnover
+    FROM brewers
+    WHERE Turnover > (
+        SELECT AVG(Turnover)
+        FROM brewers
+        );
+
+# (b) Toon alle bieren die het minimum of maximum alcohol gehalte hebben. (33)
+    SELECT Name, Alcohol
+    FROM beers
+    WHERE Alcohol = (SELECT MAX(Alcohol) FROM beers)
+       OR Alcohol = (SELECT MIN(Alcohol) FROM beers);
+
+# (c) Toon alle bieren met een alcohol hoger dan het gemiddelde en waarvan de brouwers een turnover hebben dat boven het gemiddelde ligt. (60)
+    SELECT beers.Name
+    FROM beers
+    INNER JOIN brewers ON beers.BrewerId = brewers.Id
+    WHERE Alcohol > (SELECT AVG(Alcohol) FROM beers)
+       AND Turnover > (SELECT AVG(Turnover) FROM brewers);
+
+
+# (d) Doordenker zonder search: toon een lijst van alle brouwers met de prijs en naam van hun duurste bier.
+# Het is mogelijk dat er meerdere bieren per brouwer geselecteerd worden. (266)
+    SELECT brewers.Id, brewers.Name, beers.Name, beers.Price
+    FROM brewers
+         JOIN beers ON brewers.Id = beers.BrewerId
+    WHERE beers.Price = (
+        SELECT MAX(beers2.Price)
+        FROM beers beers2
+        WHERE beers2.BrewerId = brewers.Id
+    )
+    ORDER BY brewers.Name;
