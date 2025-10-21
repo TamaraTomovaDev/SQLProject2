@@ -58,3 +58,15 @@
         FROM beers b2
         WHERE b2.CategoryId = b1.CategoryId
         );
+select b.Id,
+       b.Name as BierName,
+       b.BrewerId,
+       c.Category,
+       b.Price,
+       b.Stock,
+       b.Alcohol,
+       b.Version,
+       b.Image
+from beers b
+         inner join categories c on b.CategoryId = c.Id
+WHERE b.Alcohol <= 2;
